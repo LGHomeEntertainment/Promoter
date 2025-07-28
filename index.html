@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staff Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      max-width: 500px;
+      margin: auto;
+      text-align: center;
+    }
+    h1 { color: #333; }
+    .hidden { display: none; }
+    .button {
+      margin: 1rem;
+      padding: 0.8rem 1.5rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="staffName">Loading...</h1>
+
+  <div id="content" class="hidden">
+    <p>
+      <a id="whatsappBtn" class="button" target="_blank">Chat via WhatsApp</a>
+    </p>
+    <p>
+      <a id="brochureBtn" class="button" target="_blank">View Brochure</a>
+    </p>
+  </div>
+
+  <div id="notFound" class="hidden">
+    <p>Staff not found or not active.</p>
+  </div>
+
+  <script>
+    // 1. Get URL param
+    const params = new URLSearchParams(window.location.search);
+    const staffID = params.get('staffid');
+
+    // 2. Fetch JSON
+    fetch('staff.json')
+      .then(response => response.json())
+      .then(data => {
+        const staff = data.find(s => s.StaffID === staffID && s.Active === "Yes");
+
+        if (staff) {
+          document.getElementById('staffName').textContent = `Hi, I'm ${staff.Name}`;
+          document.getElementById('whatsappBtn').href = `https://wa.me/${staff.WhatsApp}?text=Hi%20${encodeURIComponent(staff.Name)}!%20I'm%20interested%20in%20learning%20more%20about%20LG%20TVs.`;
+          document.getElementById('brochureBtn').href = `${staffID}.pdf`;  // If your brochure is named 001.pdf, 002.pdf, etc.
+          document.getElementById('content').classList.remove('hidden');
+        } else {
+          document.getElementById('staffName').textContent = "Oops!";
+          document.getElementById('notFound').classList.remove('hidden');
+        }
+      })
+      .catch(error => {
+        console.error('Error loading JSON:', error);
+        document.getElementById('staffName').textContent = "Error loading data.";
+      });
+  </script>
+
+</body>
+</html>
