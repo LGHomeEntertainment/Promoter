@@ -46,10 +46,10 @@
         }
 
         const name = staffData.Name || "Staff Member";
-        const whatsapp = staffData.whatsapp || "";
+        const whatsapp = staffData.WhatsApp || "";
 
         container.innerHTML = `
-          <h3>${name}</h3><br>
+          <h3>${name}</h3>
           <p>Product Specialist</p><br>
           <p>Feel free to contact me about LG products!</p>
           <button onclick="window.location.href='https://wa.me/65${whatsapp}?text=Hi ${name}! I'm interested in learning more about LG TVs.'">WhatsApp Me</button>
