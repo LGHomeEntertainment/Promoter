@@ -1,75 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Staff Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LG Staff Info</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 2rem;
-      max-width: 500px;
-      margin: auto;
+      padding: 1rem;
       text-align: center;
     }
-    h1 { color: #333; }
-    .hidden { display: none; }
-    .button {
-      margin: 1rem;
-      padding: 0.8rem 1.5rem;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
+    #staffCard {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 1rem;
+      max-width: 400px;
+      margin: 2rem auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    button {
+      margin: 0.5rem;
+      padding: 0.7rem 1.2rem;
+      font-size: 1rem;
     }
   </style>
 </head>
 <body>
-
-  <h1 id="staffName">Loading...</h1>
-
-  <div id="content" class="hidden">
-    <p>
-      <a id="whatsappBtn" class="button" target="_blank">Chat via WhatsApp</a>
-    </p>
-    <p>
-      <a id="brochureBtn" class="button" target="_blank">View Brochure</a>
-    </p>
-  </div>
-
-  <div id="notFound" class="hidden">
-    <p>Staff not found or not active.</p>
-  </div>
+  <h2>LG Staff Contact</h2>
+  <div id="staffCard">Loading staff info...</div>
 
   <script>
-    // 1. Get URL param
-    const params = new URLSearchParams(window.location.search);
-    const staffID = params.get('staffid');
+    const queryParams = new URLSearchParams(window.location.search);
+    const staffId = queryParams.get("StaffID");
 
-    // 2. Fetch JSON
-    fetch('staff.json')
-      .then(response => response.json())
-      .then(data => {
-        const staff = data.find(s => s.StaffID === staffID && s.Active === "Yes");
+    fetch("staff.json")
+      .then(res => res.json())
+      .then(jsonData => {
+        const staffData = jsonData.find(s => s.StaffID == staffId); // No active check here
 
-        if (staff) {
-          document.getElementById('staffName').textContent = `Hi, I'm ${staff.Name}`;
-          document.getElementById('whatsappBtn').href = `https://wa.me/${staff.WhatsApp}?text=Hi%20${encodeURIComponent(staff.Name)}!%20I'm%20interested%20in%20learning%20more%20about%20LG%20TVs.`;
-          document.getElementById('brochureBtn').href = `${staffID}.pdf`;  // If your brochure is named 001.pdf, 002.pdf, etc.
-          document.getElementById('content').classList.remove('hidden');
-        } else {
-          document.getElementById('staffName').textContent = "Oops!";
-          document.getElementById('notFound').classList.remove('hidden');
+        const container = document.getElementById("staffCard");
+
+        if (!staffData) {
+          container.innerHTML = `<p>Staff ID not found.</p>`;
+          return;
         }
+
+        const name = staffData.Name || "Staff Member";
+        const whatsapp = staffData.WhatsApp || "";
+
+        container.innerHTML = `
+          <h3>${name}</h3>
+          <p>Feel free to contact me about LG products!</p>
+          <button onclick="window.location.href='https://wa.me/65${whatsapp}?text=Hi ${name}! I\'m interested in learning more about LG TVs.'">WhatsApp Me</button>
+          <button onclick="window.open('https://www.lg.com/sg/tvs/all-tvs')">View Brochure</button>
+        `;
       })
       .catch(error => {
-        console.error('Error loading JSON:', error);
-        document.getElementById('staffName').textContent = "Error loading data.";
+        console.error("Error loading staff data:", error);
+        document.getElementById("staffCard").innerHTML = `<p>Error loading data.</p>`;
       });
   </script>
-
 </body>
 </html>
