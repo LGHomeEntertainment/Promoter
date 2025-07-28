@@ -31,7 +31,7 @@
 
   <script>
     const queryParams = new URLSearchParams(window.location.search);
-    const staffId = queryParams.get("StaffID");
+    const staffId = queryParams.get("staffid");
 
     fetch("staff.json")
       .then(res => res.json())
