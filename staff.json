@@ -1,7 +1,7 @@
 [
-  {"StaffID": "1","Name": "Candy","WhatsApp": "9489 1570"},
-  {"StaffID": "2","Name": "Hye Min","WhatsApp": "9140 4322"},
-  {"StaffID": "3","Name": "Liz","WhatsApp": "9738 5421"},
-  {"StaffID": "4","Name": "Nikki","WhatsApp": "9477 3578"},
-  {"StaffID": "5","Name": "May Yie","WhatsApp": "9767 9923"}
+  {"StaffID": "1","Name": "Candy","WhatsApp": "9489 1570","Channel": "Harvey Norman","Outlet": "Plaza Singapura"},
+  {"StaffID": "2","Name": "Hye Min","WhatsApp": "9140 4322","Channel": "Gain City","Outlet": "Suntec City"},
+  {"StaffID": "3","Name": "Liz","WhatsApp": "9738 5421","Channel": "Courts","Outlet": "Raffles Place"},
+  {"StaffID": "4","Name": "Nikki","WhatsApp": "9477 3578","Channel": "Courts","Outlet": "Sembawang Plaza"},
+  {"StaffID": "5","Name": "May Yie","WhatsApp": "9767 9923","Channel": "Audio House","Outlet": "Ubi"}
 ]
