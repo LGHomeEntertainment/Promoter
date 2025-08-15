@@ -1,7 +1,7 @@
 [
-  {"StaffID": "1","Name": "Candy Leung","WhatsApp": "9489 1570","Channel": "Harvey Norman","Outlet": "Plaza Singapura"},
-  {"StaffID": "2","Name": "Lee Hye Min","WhatsApp": "9140 4322","Channel": "Gain City","Outlet": "Suntec City"},
-  {"StaffID": "3","Name": "Liz Tan","WhatsApp": "9738 5421","Channel": "Courts","Outlet": "Raffles Place"},
-  {"StaffID": "4","Name": "Nikki Koh","WhatsApp": "9477 3578","Channel": "Courts","Outlet": "Sembawang Plaza"},
-  {"StaffID": "5","Name": "Boon May Yie","WhatsApp": "9767 9923","Channel": "Audio House","Outlet": "Ubi"}
+  {"StaffID": "1","Name": "Candy","FullName": "Candy Leung","WhatsApp": "9489 1570","Channel": "Harvey Norman","Outlet": "Plaza Singapura"},
+  {"StaffID": "2","Name": "Hye Min","FullName": "Lee Hye Min","WhatsApp": "9140 4322","Channel": "Gain City","Outlet": "Suntec City"},
+  {"StaffID": "3","Name": "Liz","FullName": "Liz Tan","WhatsApp": "9738 5421","Channel": "Courts","Outlet": "Raffles Place"},
+  {"StaffID": "4","Name": "Nikki","FullName": "Nikki Koh","WhatsApp": "9477 3578","Channel": "Courts","Outlet": "Sembawang Plaza"},
+  {"StaffID": "5","Name": "May Yie","FullName": "Boon May Yie","WhatsApp": "9767 9923","Channel": "Audio House","Outlet": "Ubi"}
 ]
