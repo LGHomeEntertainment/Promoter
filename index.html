@@ -47,6 +47,7 @@
 
         const name = staffData.Name || "Staff Member";
         const whatsapp = (staffData.WhatsApp || "").replace(/\s+/g,""); // Remove all spaces
+        const outlet = staffData.Outlet
 
         container.innerHTML = `
           <h3>${name}</h3>
