@@ -1,70 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LG Staff Info</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 1rem;
-      text-align: center;
-    }
-    #staffCard {
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      padding: 1rem;
-      max-width: 400px;
-      margin: 2rem auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    button {
-      margin: 0.5rem;
-      padding: 0.7rem 1.2rem;
-      font-size: 1rem;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Life's Good</title>
+<style>
+  :root{
+    --accent:#e60012;     /* LG red */
+    --wa:#25D366;         /* WhatsApp green */
+    --pill:#f2ede6;
+    --shadow: 0 10px 30px rgba(0,0,0,.08);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html, body { height: 100%; }
+  body{
+    background:#fc745e;
+    font-family: "LG EI", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:stretch;
+  }
+
+  /* ===== 컨테이너: 폭은 430px을 넘지 않게, 높이는 화면 꽉 채우기 ===== */
+  .wrapper{
+    position: relative;
+    width: min(100vw, 430px);         /* 430px 기준, 더 좁은 기기면 화면폭에 맞춤 */
+    height: 100dvh;                   /* 장단축 회전에 강한 viewport height 단위 */
+    overflow:hidden;
+    border-radius: max(0px, env(safe-area-inset-left)); /* 가장자리 살짝 라운드(옵션) */
+	top:0;
+  }
+
+  /* ===== 배경 이미지를 컨테이너 전체에 꽉 채우기 ===== */
+  .banner{
+    position:absolute;
+    inset:0;                          /* top:0; right:0; bottom:0; left:0 */
+    background: url("1.png") no-repeat center top;
+    background-size: cover;           /* 비율 유지하며 꽉 채움 */
+    z-index:0;
+	top: 0px; 
+  }
+
+  /* ===== 흰 박스(bottom sheet) =====
+     - 가로 중앙: left:50% + translateX(-50%)
+     - 세로: 하단 0에 붙임
+     - 높이: 기기 높이에 따라 자동 조절하되 560~734px 사이로 제한
+  */
+  .main{
+    position:absolute;
+    left:50%;
+    transform: translateX(-50%);
+    bottom: max(0px, env(safe-area-inset-bottom));      /* 홈바 안전 영역 반영 */
+    width: min(92%, 420px);
+    height: clamp(562px, 76.5dvh, 740px);                 /* 560px ≤ 높이 ≤ 734px */
+    background:#fff;
+    border-radius: 150px 150px 0 0;
+    box-shadow: var(--shadow);
+    z-index:1;
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding-top: clamp(20px, 5vh, 30px);
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom)); /* 하단 안전여백 */
+  }
+
+  /* 내부 카드가 넘칠 때를 대비해 스크롤 가능 처리 */
+  #staffCard{
+    width:100%;
+    max-width: 400px;
+	  top: 0;
+    padding-top: clamp(30px, 5vh, 40px);
+	bottom: 0;
+
+    max-height: calc(100% - 2px);    /* 상단 padding 고려 */
+    overflow:auto;
+    -webkit-overflow-scrolling: touch;
+    text-align: center;
+  }
+
+  h2{
+    font-size: clamp(26px, 4.5vh, 36px);
+    font-weight: 800;
+    letter-spacing: .02em;
+    margin-bottom: .25rem;
+  }
+	h3{
+    font-size: clamp(14px, 3vh, 20px);
+    font-weight: 400;
+    letter-spacing: .02em;
+    margin-bottom: .25rem;
+	color:#FD312E;
+  }
+	
+	.info {
+		padding: 1rem 0 0.5rem 0;
+	}
+	.info p {margin:0; line-height:0.2;}
+	.circle_icon {
+		width: 2rem;
+		padding: 1px;
+		margin-bottom: 0.5rem;
+	}
+
+p {font-size: clamp(14px, 2.5vh, 16px);
+    line-height: 1;
+    color:black;
+    margin: .20rem 0;
+  }
+	.link{padding: 3rem 0}
+	.link p {font-size: clamp(12px, 2.3vh, 14px);
+		font-weight: 800;
+    line-height: 1;
+    color:black;
+    margin: .20rem 0;
+	padding-bottom: 0.5rem;}
+	.imgbtn{
+  appearance:none; border:0; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  width:min(100%, 300px);           /* 필요 시 조절 */
+    /* 원본 비율 유지 */
+  height:3rem;                             /* 필요 시 조절 */
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;  
+  background-color:transparent;/* 이미지 비율로 늘리려면 contain */
+ font-weight:700;
+filter: drop-shadow(0rem 0.3125rem 0.375rem rgba(0, 0, 0, 0.161));
+  font-size:13px;  
+}
+.imgbtn + .imgbtn { margin-top: 12px; } 
+/* 각각 배경 이미지 연결 */
+.imgbtn.brochure{ 
+  background-image:url("view_brochure.png"); 
+  color:#707070;  /* 텍스트 색 */
+}
+.imgbtn.wa{ 
+  background-image:url("whatsapp_me.png"); 
+  color:#707070;
+}
+
+
+
+  /* 아주 작은 높이(키보드/작은 기기)에서 여백 축소 */
+  @media (max-height: 640px){
+    .main{ height: clamp(520px, 80dvh, 640px); }
+  }
+</style>
 </head>
+
 <body>
-  <h2>LG Staff Contact</h2>
-  <div id="staffCard">Loading staff info...</div>
+  <div class="wrapper">
+  <!-- 상단 배경 -->
+  <div class="banner"></div>
+<div class="main">
+  <div id="staffCard">
+          <h2>Candy Leung</h2>
+	      <h3>Product Specialist</h3>
+  <div class="info">
+	  <img class="circle_icon" src="Group 5.png" alt="phone icon">  
+	  <p>94891570</p>
+	  </div>
+   <div class="info">
+	   <img class="circle_icon" src="Group 6.png" alt="location icon">
+	   <p>Harvey Norman</p> <br> <p> Plaza Singapura</p>
+	  </div>
+	  
+	<div class="link">
+          <p>Feel free to contact me <br>about LG products!</p>
+          <button class="imgbtn wa" onclick="window.location.href='https://wa.me/6594891570?text=Hi Candy Leung! I%27m interested in learning more about LG TVs.'">WhatsApp Me</button>
+          <button class="imgbtn brochure" onclick="window.open('https://www.lg.com/sg/tvs-soundbars/')">View Brochure </button> </div>
+        </div>
+	  </div></div>
+ <script>
+(() => {
+  const container = document.getElementById("staffCard");
+  const params = new URLSearchParams(location.search);
+  const staffId = params.get("staffid");
 
-  <script>
-    const queryParams = new URLSearchParams(window.location.search);
-    const staffId = queryParams.get("staffid");
+  // staffid 없으면 기본 정적 카드 유지
+  if (!staffId) {
+    console.warn("No staffid in URL; showing default card.");
+    return;
+  }
 
-    fetch("staff.json")
-      .then(res => res.json())
-      .then(jsonData => {
-        const staffData = jsonData.find(s => s.StaffID == staffId); // No active check here
+  const ICON_PHONE = "Group 5.png";     // 파일명에 공백이 있어도 따옴표 쓰면 OK
+  const ICON_LOC   = "Group 6.png";
 
-        const container = document.getElementById("staffCard");
+  const safe = (v) => (v == null ? "" : String(v));   // 간단 이스케이프 대용
 
-        if (!staffData) {
-          container.innerHTML = `<p>Staff ID not found.</p>`;
-          return;
-        }
+  fetch("staff.json", { cache: "no-store" })
+    .then((res) => {
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    })
+    .then((list) => {
+      const s = list.find((x) => String(x.StaffID) === String(staffId));
+      if (!s) {
+        container.innerHTML = `<p>Staff ID not found.</p>`;
+        return;
+      }
 
-        const name = staffData.Name || "Staff Member";
-        const fullname = staffData.FullName
-        const whatsapp = (staffData.WhatsApp || "").replace(/\s+/g,""); // Remove all spaces
-        const outlet = staffData.Outlet
-        const channel = staffData.Channel
+      const name     = s.Name ?? "Staff Member";
+      const fullname = s.FullName ?? name;
+      const whatsapp = (s.WhatsApp ?? "").replace(/\s+/g, "");
+      const channel  = s.Channel ?? "";
+      const outlet   = s.Outlet ?? "";
 
-        container.innerHTML = `
-          <h3>${fullname}</h3>
-          <p>Product Specialist</p><br>
-          <p>${whatsapp}</p><br>
-          <p>${channel}</p><p>${outlet}</p><br>
-          <p>Feel free to contact me about LG products!</p>
-          <button onclick="window.location.href='https://wa.me/65${whatsapp}?text=Hi ${name}! I%27m interested in learning more about LG TVs.'">WhatsApp Me</button>
-          <button onclick="window.open('https://www.lg.com/sg/tvs-soundbars/')">View Brochure (test link to LG.com)</button>
-        `;
-      })
-      .catch(error => {
-        console.error("Error loading staff data:", error);
-        document.getElementById("staffCard").innerHTML = `<p>Error loading data.</p>`;
-      });
-  </script>
-</body>
-</html>
+      const waText = `Hi ${fullname}! I'm interested in learning more about LG TVs.`;
+      const waUrl  = whatsapp ? `https://wa.me/65${whatsapp}?text=${encodeURIComponent(waText)}` : null;
+
+      container.innerHTML = `
+        <h2>${safe(fullname)}</h2>
+        <h3>Product Specialist</h3>
+
+        <div class="info">
+          <img class="circle_icon" src="${ICON_PHONE}" alt="phone icon">
+          <p>${safe(whatsapp) || "-"}</p>
+        </div>
+
+        <div class="info">
+          <img class="circle_icon" src="${ICON_LOC}" alt="location icon">
+          <p>${safe(channel)}</p> <br> <p>${safe(outlet)}</p>
+        </div>
+
+        <div class="link">
+          <p>Feel free to contact me <br>about LG products!</p>
+          <button class="imgbtn wa" ${waUrl ? `onclick="location.href='${waUrl}'"` : "disabled"}>WhatsApp Me</button>
+          <button class="imgbtn brochure" onclick="window.open('https://www.lg.com/sg/tvs-soundbars/')">View Brochure</button>
+        </div>
+      `;
+    })
+    .catch((err) => {
+      console.error("Error loading staff data:", err);
+      container.innerHTML = `<p>Could not load <code>staff.json</code>. 
+      If you're opening this file directly (file://), please run a local server (e.g. VS Code Live Server or <code>python -m http.server</code>).</p>`;
+    });
+})();
+</script>
+ 
+
+
+</body></html>
