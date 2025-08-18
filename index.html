@@ -102,7 +102,14 @@
     color:black;
     margin: .20rem 0;
   }
-  .link{padding: 3rem 0}
+  
+  .link{
+    padding: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
   .link p {
     font-size: clamp(12px, 2.3vh, 14px);
     font-weight: 800;
@@ -111,6 +118,7 @@
     margin: .20rem 0;
     padding-bottom: 0.5rem;
   }
+  
   .imgbtn{
     appearance:none; border:0; cursor:pointer;
     display:flex; align-items:center; justify-content:center;
@@ -175,7 +183,7 @@
       const channel  = s.Channel ?? "";
       const outlet   = s.Outlet ?? "";
 	  
-		const waText = `Hi ${fullname}! I'm interested in learning more about LG TVs.`;
+      const waText = `Hi ${fullname}! I'm interested in learning more about LG TVs.`;
       const waUrl  = whatsapp ? `https://wa.me/65${whatsapp}?text=${encodeURIComponent(waText)}` : null;
 
       container.innerHTML = `
@@ -192,7 +200,7 @@
           <p>${safe(channel)}</p> <br> <p>${safe(outlet)}</p>
         </div>
 
-        <div class="link" style="text-align: center; margin-top: 15px;">
+        <div class="link">
           <p>Feel free to contact me <br>about LG products!</p>
           <button class="imgbtn wa" ${waUrl ? `onclick="location.href='${waUrl}'"` : "disabled"}>WhatsApp Me</button>
           <button class="imgbtn brochure" onclick="window.open('brochure.pdf')">View Brochure</button>
