@@ -179,12 +179,17 @@
 
       const name     = s.Name ?? "Staff Member";
       const fullname = s.FullName ?? name;
-      const whatsapp = (s.WhatsApp ?? "").replace(/\s+/g, "");
+      const whatsapp = (s.WhatsApp ?? "").replace(/\s+/g, "").replace(/[^\d]/g, "");
       const channel  = s.Channel ?? "";
       const outlet   = s.Outlet ?? "";
 	  
-      const waText = `Hi ${fullname}! I'm interested in learning more about LG TVs.`;
+      const waText = `Hi ${name}! I'm interested in learning more about LG TVs.`;
       const waUrl  = whatsapp ? `https://wa.me/65${whatsapp}?text=${encodeURIComponent(waText)}` : null;
+      
+      // Debug logging
+      console.log("Staff data:", s);
+      console.log("WhatsApp number:", whatsapp);
+      console.log("WhatsApp URL:", waUrl);
 
       container.innerHTML = `
         <h2>${safe(fullname)}</h2>
@@ -202,8 +207,8 @@
 
         <div class="link">
           <p>Feel free to contact me <br>about LG products!</p>
-          <button class="imgbtn wa" ${waUrl ? `onclick="location.href='${waUrl}'"` : "disabled"}>WhatsApp Me</button>
-          <button class="imgbtn brochure" onclick="window.open('brochure.pdf')">View Brochure</button>
+          <button class="imgbtn wa" ${waUrl ? `onclick="window.open('${waUrl}', '_blank')"` : "disabled"}>WhatsApp Me</button>
+          <button class="imgbtn brochure" onclick="window.open('brochure.pdf', '_blank')">View Brochure</button>
         </div>
       `;
     })
