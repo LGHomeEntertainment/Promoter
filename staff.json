@@ -1,7 +1,12 @@
 [
-  {"StaffID": "t74SA2uz","Name": "Candy","FullName": "Candy Leung","WhatsApp": "9489 1570","Channel": "Harvey Norman","Outlet": "Plaza Singapura"},
-  {"StaffID": "2Qo7cW05","Name": "Hye Min","FullName": "Lee Hye Min","WhatsApp": "9140 4322","Channel": "Gain City","Outlet": "Suntec City"},
-  {"StaffID": "yLJlRlY6","Name": "Liz","FullName": "Liz Tan","WhatsApp": "9738 5421","Channel": "Courts","Outlet": "Raffles Place"},
-  {"StaffID": "4255VIrU","Name": "Nikki","FullName": "Nikki Koh","WhatsApp": "9477 3578","Channel": "Courts","Outlet": "Sembawang Plaza"},
-  {"StaffID": "4hJS8dYm","Name": "May Yie","FullName": "Boon May Yie","WhatsApp": "9767 9923","Channel": "Audio House","Outlet": "Ubi"}
+  {"StaffID": "t74SA2uz","Name": "Don Ho","FullName": "Don Ho Rui Fen","WhatsApp": "9066 1250","Channel": "Courts","Outlet": "Megastore"},
+  {"StaffID": "2Qo7cW05","Name": "Alex","FullName": "Alex Koh","WhatsApp": "8328 8224","Channel": "Courts","Outlet": "Megastore"},
+  {"StaffID": "yLJlRlY6","Name": "Syaiful","FullName": "Syaiful","WhatsApp": "8189 6970","Channel": "Courts","Outlet": "Megastore"},
+  {"StaffID": "4255VIrU","Name": "Razali","FullName": "Razali","WhatsApp": "9423 8917","Channel": "Courts","Outlet": "Causeway Point"},
+  {"StaffID": "4hJS8dYm","Name": "Bernard","FullName": "Bernard Ong","WhatsApp": "8815 3367","Channel": "Courts","Outlet": "Heeren"},
+  {"StaffID": "Ax9vr78Z","Name": "Don Ho","FullName": "Don Ho Siang Fu","WhatsApp": "9119 8787","Channel": "Best Denki","Outlet": "VivoCity"},
+  {"StaffID": "xMcUKWfM","Name": "Dicky","FullName": "Dicky Oh","WhatsApp": "9169 9054","Channel": "Best Denki","Outlet": "VivoCity"},
+  {"StaffID": "Jt08uaW8","Name": "Sky","FullName": "Sky Liang","WhatsApp": "9815 1442","Channel": "Audio House","Outlet": "Ubi"},
+  {"StaffID": "8rH9JoeZ","Name": "James Neo","FullName": "James Neo","WhatsApp": "9188 0501","Channel": "Harvey Norman","Outlet": "Millenia walk"},
+  {"StaffID": "e7zt6Vvj","Name": "James Peh","FullName": "James Peh","WhatsApp": "8101 0808","Channel": "Harvey Norman","Outlet": "Millenia walk"}
 ]
