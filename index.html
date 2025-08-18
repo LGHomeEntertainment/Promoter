@@ -183,13 +183,29 @@
       const channel  = s.Channel ?? "";
       const outlet   = s.Outlet ?? "";
 	  
-      const waText = `Hi ${name}! I'm interested in learning more about LG TVs.`;
+      const waText = `Hi ${fullname}! I'm interested in learning more about LG TVs.`;
       const waUrl  = whatsapp ? `https://wa.me/65${whatsapp}?text=${encodeURIComponent(waText)}` : null;
       
       // Debug logging
       console.log("Staff data:", s);
       console.log("WhatsApp number:", whatsapp);
       console.log("WhatsApp URL:", waUrl);
+
+      // Create the HTML structure
+      const waButton = document.createElement('button');
+      waButton.className = 'imgbtn wa';
+      waButton.textContent = 'WhatsApp Me';
+      
+      if (waUrl) {
+        waButton.onclick = () => window.open(waUrl, '_blank');
+      } else {
+        waButton.disabled = true;
+      }
+
+      const brochureButton = document.createElement('button');
+      brochureButton.className = 'imgbtn brochure';
+      brochureButton.textContent = 'View Brochure';
+      brochureButton.onclick = () => window.open('brochure.pdf', '_blank');
 
       container.innerHTML = `
         <h2>${safe(fullname)}</h2>
@@ -207,10 +223,14 @@
 
         <div class="link">
           <p>Feel free to contact me <br>about LG products!</p>
-          <button class="imgbtn wa" ${waUrl ? `onclick="window.open('${waUrl}', '_blank')"` : "disabled"}>WhatsApp Me</button>
-          <button class="imgbtn brochure" onclick="window.open('brochure.pdf', '_blank')">View Brochure</button>
+          <div id="button-container"></div>
         </div>
       `;
+      
+      // Add the buttons to the container
+      const buttonContainer = container.querySelector('#button-container');
+      buttonContainer.appendChild(waButton);
+      buttonContainer.appendChild(brochureButton);
     })
     .catch((err) => {
       console.error("Error loading staff data:", err);
