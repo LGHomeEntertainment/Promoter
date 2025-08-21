@@ -180,24 +180,20 @@
       const name     = s.Name ?? "Staff Member";
       const fullname = s.FullName ?? name;
       const whatsapp = (s.WhatsApp ?? "").replace(/\s+/g, "").replace(/[^\d]/g, "");
+	  const whatsappDisplay = (s.WhatsApp ?? "");
       const channel  = s.Channel ?? "";
       const outlet   = s.Outlet ?? "";
 	  
       const waText = `Hi ${name}! I'm interested in learning more about LG TVs.`;
       const waUrl  = whatsapp ? `https://wa.me/65${whatsapp}?text=${encodeURIComponent(waText)}` : null;
       
-      // Debug logging
-      console.log("Staff data:", s);
-      console.log("WhatsApp number:", whatsapp);
-      console.log("WhatsApp URL:", waUrl);
-
       container.innerHTML = `
         <h2>${safe(fullname)}</h2>
         <h3>Product Specialist</h3>
 
         <div class="info">
           <img class="circle_icon" src="${ICON_PHONE}" alt="phone icon">
-          <p>${safe(whatsapp) || "-"}</p>
+          <p>'+65 '${safe(whatsappDisplay) || "-"}</p>
         </div>
 
         <div class="info">
