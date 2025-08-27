@@ -1,15 +1,13 @@
 [
-  {"StaffID": "t74SA2uz","Name": "Don","FullName": "Don Ho Rui Fen","WhatsApp": "9066 1250","Channel": "Courts","Outlet": "Megastore"},
+  {"StaffID": "nekcihc","Name": "test","FullName": "MEOW meow","WhatsApp": "1111 2222","Channel": "abc","Outlet": "def"},
+  {"StaffID": "4x0D7Yso","Name": "Don","FullName": "Don Ho","WhatsApp": "9066 1250","Channel": "Courts","Outlet": "Megastore"},
   {"StaffID": "2Qo7cW05","Name": "Alex","FullName": "Alex Koh","WhatsApp": "8328 8224","Channel": "Courts","Outlet": "Megastore"},
   {"StaffID": "yLJlRlY6","Name": "Syaiful","FullName": "Syaiful","WhatsApp": "8189 6970","Channel": "Courts","Outlet": "Megastore"},
   {"StaffID": "4255VIrU","Name": "Razali","FullName": "Razali","WhatsApp": "9423 8917","Channel": "Courts","Outlet": "Causeway Point"},
   {"StaffID": "4hJS8dYm","Name": "Bernard","FullName": "Bernard Ong","WhatsApp": "8815 3367","Channel": "Courts","Outlet": "Heeren"},
-  {"StaffID": "Ax9vr78Z","Name": "Don","FullName": "Don Ho Siang Fu","WhatsApp": "9119 8787","Channel": "Best Denki","Outlet": "Vivo City"},
-  {"StaffID": "xMcUKWfM","Name": "Dicky","FullName": "Dicky Oh","WhatsApp": "9169 9054","Channel": "Best Denki","Outlet": "Vivo City"},
-  {"StaffID": "Jt08uaW8","Name": "Sky","FullName": "Sky Liang","WhatsApp": "9815 1442","Channel": "Audio House","Outlet": "Ubi"},
-  {"StaffID": "8rH9JoeZ","Name": "James","FullName": "James Neo","WhatsApp": "9188 0501","Channel": "Harvey Norman","Outlet": "Millenia Walk"},
-  {"StaffID": "e7zt6Vvj","Name": "James","FullName": "James Peh","WhatsApp": "8101 0808","Channel": "Harvey Norman","Outlet": "Millenia Walk"},
-  {"StaffID": "4x0D7Yso","Name": "Don","FullName": "Don Ho","WhatsApp": "9066 1250","Channel": "Courts","Outlet": "Megastore"},
   {"StaffID": "KfKcx18C","Name": "Don","FullName": "Don Ho","WhatsApp": "9119 8787","Channel": "Best Denki","Outlet": "Vivo City"},
-  {"StaffID": "nekcihc","Name": "test","FullName": "MEOW meow","WhatsApp": "1111 2222","Channel": "abc","Outlet": "def"}
+  {"StaffID": "xMcUKWfM","Name": "Dicky","FullName": "Dicky Oh","WhatsApp": "9169 9054","Channel": "Best Denki","Outlet": "Vivo City"},
+  {"StaffID": "Jt08uaW8","Name": "Sky","FullName": "Sky Wong","WhatsApp": "9815 1442","Channel": "Audio House","Outlet": "Ubi"},
+  {"StaffID": "8rH9JoeZ","Name": "James","FullName": "James Neo","WhatsApp": "9188 0501","Channel": "Harvey Norman","Outlet": "Millenia Walk"},
+  {"StaffID": "e7zt6Vvj","Name": "James","FullName": "James Peh","WhatsApp": "8101 0808","Channel": "Harvey Norman","Outlet": "Millenia Walk"}
 ]
