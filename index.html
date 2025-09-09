@@ -184,7 +184,7 @@
       const channel  = s.Channel ?? "";
       const outlet   = s.Outlet ?? "";
 	  
-      const waText = `Hi ${name}! I'm interested in learning more about LG TVs.`;
+      const waText = `Hi ${name}! I'm interested in learning more about Audio/Visual products.`;
       const waUrl  = whatsapp ? `https://wa.me/65${whatsapp}?text=${encodeURIComponent(waText)}` : null;
       
       container.innerHTML = `
@@ -193,7 +193,7 @@
 
         <div class="info">
           <img class="circle_icon" src="${ICON_PHONE}" alt="phone icon">
-          <p>+65 ${safe(whatsappDisplay) || "-"}</p>
+          <p>${whatsappDisplay && whatsappDisplay !== "-" ? <a href="tel:+65${whatsappClean}">+65 ${whatsappDisplay}</a> : "-"}</p>
         </div>
 
         <div class="info">
