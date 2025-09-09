@@ -156,19 +156,10 @@
 (() => {
   const container = document.getElementById("staffCard");
   const params = new URLSearchParams(location.search);
-  const encryptedStaffId = params.get("staffid");
+  const staffId = params.get("staffid");
 
-  if (!encryptedStaffId) {
+  if (!staffId) {
     container.innerHTML = `<p>No staff selected.</p>`;
-    return;
-  }
-
-  // Decrypt the staff ID
-  let staffId;
-  try {
-    staffId = atob(encryptedStaffId); // Decode from base64
-  } catch (error) {
-    container.innerHTML = `<p>Invalid staff ID.</p>`;
     return;
   }
 
@@ -189,24 +180,20 @@
       const name     = s.Name ?? "Staff Member";
       const fullname = s.FullName ?? name;
       const whatsapp = (s.WhatsApp ?? "").replace(/\s+/g, "").replace(/[^\d]/g, "");
+	  const whatsappDisplay = (s.WhatsApp ?? "");
       const channel  = s.Channel ?? "";
       const outlet   = s.Outlet ?? "";
 	  
-      const waText = `Hi ${fullname}! I'm interested in learning more about Audio/Visual products.`;
+      const waText = `Hi ${name}! I'm interested in learning more about Audio/Visual products.`;
       const waUrl  = whatsapp ? `https://wa.me/65${whatsapp}?text=${encodeURIComponent(waText)}` : null;
       
-      // Debug logging
-      console.log("Staff data:", s);
-      console.log("WhatsApp number:", whatsapp);
-      console.log("WhatsApp URL:", waUrl);
-
       container.innerHTML = `
         <h2>${safe(fullname)}</h2>
         <h3>Product Specialist</h3>
 
         <div class="info">
           <img class="circle_icon" src="${ICON_PHONE}" alt="phone icon">
-          <p>${whatsappDisplay && whatsappDisplay !== "-" ? `<a href="tel:+65${whatsappClean}">+65 ${whatsappDisplay}</a>` : "-"}</p>
+          <p>${whatsappDisplay && whatsappDisplay.trim() !== "" ? `<a href="tel:+65${whatsapp}">+65 ${whatsappDisplay}</a>` : "-"}</p>
         </div>
 
         <div class="info">
@@ -217,7 +204,7 @@
         <div class="link">
           <p>Feel free to contact me!</p>
           <button class="imgbtn wa" onclick="openWhatsApp()">WhatsApp Me</button>
-          <button class="imgbtn brochure" onclick="window.open('brochure.pdf', '_blank')">View Brochure</button>
+		  <button class="imgbtn brochure" onclick="window.open('https://lgaitv.com/Brochure.html', '_blank')">View Brochure</button>
         </div>
       `;
       
